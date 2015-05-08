@@ -28,7 +28,7 @@ Add the following to the `body` tag on every layout you want to use auto\_js
 
 ## Usage - Scope based Execution
 
-auto\_js stores all your javasript code in an object literal with a single variable exposed at global scope. You can indicate which javascript to execute by placing it in the appropriate location in the object literal.
+auto\_js stores all your javascript code in an object literal with a single variable exposed at global scope. You can indicate which javascript to execute by placing it in the appropriate location in the object literal.
 
 By default, the global object is accessible at `window['auto_js_rails']`. You can configure a shorter or more descriptive alias by adding:
 
@@ -50,7 +50,7 @@ You can define application-wide code with:
         console.log("Initializing Application")
 
 
-This will execute `my_app.scopes._application.init()` whenever a full context reload is requested. This is useful for binding events at the document/window level. To avoid multi-binding of events, it will not run on navigation events if turbolinks is enabled. This is the first javascript function to be run with autojs.
+This will execute `my_app.scopes._application.init()` whenever a full context reload is requested. This is useful for binding events at the document/window level. To avoid multi-binding of events, it will not run on navigation events if turbolinks is enabled. This is the first javascript function to be run with auto\_js.
 
 #### Controller-wide Javascript
 
@@ -69,10 +69,10 @@ You can define view specific code with:
     my_app.scopes.users =
       edit: ->
         console.log("User Edit View")
-  
+
       index: ->
         console.log("User Index View")
-        
+
 
 This will execute the `edit()` function on the User edit page, and the `index()` function on the User index page.
 
@@ -80,10 +80,10 @@ This will execute the `edit()` function on the User edit page, and the `index()`
 
 auto\_js comes with an additional object (accessible at `my_app.utils`). Use this for code that needs to be used across unrelated views, such as form validators.
 
-    my_app.utils = 
+    my_app.utils =
       fieldHasText: (field) ->
         return !! field.value.length
-        
+
 
 ## Usage - Global Variables
 
@@ -102,7 +102,7 @@ Consider the following example which combines all the previous snippits:
         _application:
           init: ->
             console.log("Initializing Application")
-    
+
         users:
           init: ->
             console.log("Initializing Users Controller")
@@ -112,15 +112,15 @@ Consider the following example which combines all the previous snippits:
 
           edit: ->
             console.log("Users-Edit page")
-            
+
       utils:
         fieldHasText: (field) ->
           return !! field.value.length
-          
+
       vars:
         windowTimer: null
         geoLocation: {lat: 0, lon: 0}
-      
+
 
 
 Visiting `/users` would output the following:
@@ -138,7 +138,7 @@ If you have questions or problems, please submit an issue/bug via github. Feel f
 
 ## Credits
 
-auto_js is written and maintaned by Daniel Fuller.
+auto_js is written and maintained by Daniel Fuller.
 
 Currently funded and maintained by [RingSeven](http://ringseven.com)
 
