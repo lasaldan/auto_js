@@ -1,7 +1,7 @@
 do ->
 
   app_name = "auto_js_rails"
-  version_number = ".5"
+  version_number = "0.9.0"
 
   ###
   # auto_js configuration

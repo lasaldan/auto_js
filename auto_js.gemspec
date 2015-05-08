@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'auto_js'
-  s.version     = '0.0.5'
+  s.version     = '0.9.0'
   s.date        = '2015-03-20'
   s.summary     = "Auto-executes javascript based on current view"
   s.description = "Easily organizes a project's custom javascript and executes appropriate snippits automatically. Turbolinks compatible."
