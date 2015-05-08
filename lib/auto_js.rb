@@ -1,3 +1,3 @@
-module auto_js
+module AutoJs
   require 'auto_js/engine'
 end
