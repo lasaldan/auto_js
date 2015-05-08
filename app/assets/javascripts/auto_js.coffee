@@ -1,6 +1,7 @@
 do ->
 
-  app_name = "my_rails_app"
+  app_name = "auto_js_rails"
+  version_number = ".5"
 
   ###
   # auto_js configuration
@@ -8,9 +9,8 @@ do ->
   # Will be available at global scope i.e. accessible at window['my_rails_app']
   ###
   window['auto_js_rails'] = {}
-  window['auto_js_rails'].version = ".5"
+  window['auto_js_rails'].version = version_number
   window['auto_js_rails'].app_name = app_name
-
 
   ###
   # The main object, at global scope, which contains all the JS code for the rails app.
@@ -34,6 +34,22 @@ do ->
   # window.app_name.vars is a wrapper for all the app-wide variables that may be needed
   ##
   self.vars = {}
+
+
+  ###
+  # Convenience method for setting an alias to access auto_js.
+  # By default, the js code is accessible at window['auto_js_rails']
+  # By specifying an alias, the js code is acessible at 'alias'
+  ###
+  self.set_alias = (name) ->
+
+    if( window[ name ] )
+      console.error("Error: '" + name + "' is already used at the global scope and can't be used as an alias for auto_js_rails.")
+
+    else
+      window[ name ] = window['auto_js_rails']
+
+    return
 
   ###
   # Calls the appropriate block of JS for the provided controller and action.
