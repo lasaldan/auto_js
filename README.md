@@ -1,4 +1,7 @@
+
 # auto_js
+
+[![Gem Version](https://badge.fury.io/rb/auto_js.svg)](http://badge.fury.io/rb/auto_js)
 
 auto\_js fills the gap between the default rails management of javascript and a full front-end framework. It allows for automatic execution of code based on controller/view as well as ad-hoc reuse of javascript functions.
 
