@@ -1,7 +1,7 @@
 do ->
 
   app_name = "auto_js_rails"
-  version_number = "0.9.0"
+  version_number = "1.0.0"
 
   ###
   # auto_js configuration
@@ -93,8 +93,8 @@ do ->
     if self.vars._page_initialized
       return
 
-    controller = document.body.getAttribute('data-controller')
-    action = document.body.getAttribute('data-action')
+    controller = document.body.getAttribute('data-controller').replace("/","-")
+    action = document.body.getAttribute('data-action').replace("/","-")
 
     self.scopes._exec controller
     self.scopes._exec controller, action
