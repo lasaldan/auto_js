@@ -35,6 +35,11 @@ do ->
   ##
   self.vars = {}
 
+  ##
+  # window.app_name.initializers is a wrapper for all initializers
+  ##
+  self.initializers = {}
+
 
   ###
   # Convenience method for setting an alias to access auto_js.
