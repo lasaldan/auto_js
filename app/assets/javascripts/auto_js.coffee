@@ -93,8 +93,18 @@ do ->
     if self.vars._page_initialized
       return
 
-    controller = document.body.getAttribute('data-controller').replace("/","-")
-    action = document.body.getAttribute('data-action').replace("/","-")
+    controller = document.body.getAttribute('data-controller')
+    while (n = controller.indexOf("/")) != -1
+      c = controller
+      controller = c.replace /\//, ""
+      controller = c.substr(0,n) + c.charAt(n).toUpperCase() + c.substr(n+1)
+
+    action = document.body.getAttribute('data-action')
+    while (n = action.indexOf("/")) != -1
+      a = action
+      action = a.replace /\//, ""
+      action = a.substr(0,n) + a.charAt(n).toUpperCase() + a.substr(n+1)
+
 
     self.scopes._exec controller
     self.scopes._exec controller, action
