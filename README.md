@@ -11,7 +11,7 @@ auto\_js is compatible with turbolinks, and works with javascript or coffeescrip
 
 Add the following to your `gemfile`:
 ``` ruby
-    gem "auto_js"
+gem "auto_js"
 ```
 then `bundle install`
 
