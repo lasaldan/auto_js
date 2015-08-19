@@ -10,9 +10,9 @@ auto\_js is compatible with turbolinks, and works with javascript or coffeescrip
 ## Installation
 
 Add the following to your `gemfile`:
-'''ruby
+``` ruby
     gem "auto_js"
-'''
+```
 then `bundle install`
 
 or install from Rubygems with:
