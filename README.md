@@ -143,9 +143,9 @@ If you have questions or problems, please submit an issue/bug via github. Feel f
 
 auto_js is written and maintained by Daniel Fuller.
 
-Currently funded and maintained by [RingSeven](http://ringseven.com)
+Originally funded and maintained by [RingSeven](http://ringseven.com)
 
-![RingSeven](https://avatars1.githubusercontent.com/u/8309133?v=3&s=200)
+Currently funded and maintained by [VerdadTech](http://verdadtech.com)
 
 ## Copyright
 
