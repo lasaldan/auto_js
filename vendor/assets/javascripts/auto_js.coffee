@@ -113,32 +113,57 @@ do ->
 
     return
 
-
   ###
   # Keeps track of whether or not we need to re-run the page initializer (for turbolinks)
   ###
   self.vars._app_initialized = false
   self.vars._page_initialized = false
 
-
   ###
   # If this is running, a full context reload was executed. The app needs reinitialized.
   # This doesn't get fired if turbolinks is handling the navigation transition
   ###
-  $(document).ready self.scopes._app_init
+  document.addEventListener "DOMContentLoaded", ->
+    console.log("dom")
+    self.scopes._app_init()
+    self.prepare_modal_observer()
 
-
-  document.addEventListener 'page:before-unload', ->
+  ###
+  # This sets a flag marking a page as requiring initialization
+  # This doesn't get fired if history navigation occurs, thus the page remains initialized
+  ###
+  document.addEventListener 'turbolinks:before-visit', ->
+    console.log("before")
     self.vars._page_initialized = false
 
   ###
-  # document.ready doesn't get fired on turbolinks load. Bind an event to handle the
-  # ajax page loading events triggered by turbolinks
+  # DOMContentLoaded doesn't get fired on turbolinks load. Bind an event to handle the
+  # ajax page loading events and history events triggered by turbolinks
   ###
-  document.addEventListener 'page:change', ->
-
+  document.addEventListener 'turbolinks:load', ->
+    console.log('load')
     self.scopes._page_init()
 
-    return
+  ###
+  # Set up modal observers for initializing remote loaded content
+  ###
+  self.prepare_modal_observer = ->
+    modal_initializer = (mutations, observer) ->
+      console.log(mutations)
+      for mutation in mutations
+        if mutation.addedNodes.length && mutation.addedNodes[0].classList.contains("modal")
+          console.log("initing modal")
+          controller = document.body.getAttribute('data-controller')
+          self.scopes._exec '_application', '_modal'
+          self.scopes._exec controller, 'modal'
+          if modal_method = mutation.addedNodes[0].dataset.init_method
+            self.scopes._exec controller, modal_method
 
+    modal_observer = new MutationObserver modal_initializer
+    modal_observer.observe document.body,
+      childList: true
+
+  ###
+  # Return nothing
+  ###
   return
